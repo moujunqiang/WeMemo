@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ly_main_weixin"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#fcfcfc"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/title_bar">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="微信"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_save"
+            android:layout_marginRight="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="保存"
+            android:textColor="#fff"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/content_new"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/grey_100"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/et_new_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:ellipsize="end"
+            android:hint="请输入标题"
+            android:maxLines="1"
+            android:padding="@dimen/activity_margin_16"
+            android:textColor="@color/grey_700"
+            android:textSize="@dimen/text_size_18" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/activity_margin_16"
+            android:paddingRight="@dimen/activity_margin_16"
+            android:paddingBottom="@dimen/activity_margin_16">
+
+
+            <TextView
+                android:id="@+id/tv_remindtime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="点击设置完成时间"
+                android:textColor="@color/grey_800"
+                android:textSize="@dimen/text_size_14" />
+
+            <Spinner
+                android:id="@+id/type_select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/tv_remindtime"
+                android:layout_alignParentRight="true"
+                android:entries="@array/note_type"
+                android:textColor="@color/grey_800"
+                android:textSize="@dimen/text_size_14" />
+
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/et_new_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:gravity="top"
+            android:padding="@dimen/activity_margin_16"
+            android:textColor="@color/grey_600"
+            android:textSize="@dimen/text_size_16" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
