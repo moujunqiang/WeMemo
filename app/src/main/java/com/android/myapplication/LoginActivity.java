@@ -19,6 +19,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.myapplication.db.UserDao;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -98,7 +99,6 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"密码不能为空", Toast.LENGTH_LONG).show();
             return;
         }
-
         Cursor cursor = userdao.query(username.trim(), password.trim());
         if (cursor.moveToNext()) {
             Intent intent = new Intent();

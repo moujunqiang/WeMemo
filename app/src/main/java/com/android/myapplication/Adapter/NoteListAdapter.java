@@ -8,7 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.android.myapplication.R;
 import com.android.myapplication.bean.NoteBean;
 
@@ -94,7 +96,6 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.ViewHo
         holder.tv_list_summary.setText(note.getContent());
         holder.tv_list_remindtime.setText(note.getRemindTime());
         holder.tv_list_type.setText(note.getType());
-        holder.iv_list_notify.setImageResource(note.getAlarm() == 0 ? R.drawable.ic_alarm_unnotify : R.drawable.ic_alarm_notify);
 
         holder.iv_list_mark.setImageResource(note.getMark() == 0 ? R.drawable.unfinish : R.drawable.finish);
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
@@ -123,7 +124,6 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.ViewHo
         public TextView tv_list_type;//笔记类型
         public TextView tv_list_mark;
         public ImageView iv_list_mark;
-        public ImageView iv_list_notify;
 
         public ViewHolder(View view) {
             super(view);
@@ -133,7 +133,6 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.ViewHo
             tv_list_type = (TextView) view.findViewById(R.id.tv_list_type);
 //            tv_list_mark= (TextView) view.findViewById(id.tv_list_mark);
             iv_list_mark = (ImageView) view.findViewById(R.id.iv_list_mark);
-            iv_list_notify = (ImageView) view.findViewById(R.id.iv_list_notify);
 
 
             view.setOnCreateContextMenuListener(this);
@@ -148,8 +147,6 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.ViewHo
             contextMenu.add(0, Menu.FIRST + 3, 0, "删除该笔记");
             contextMenu.add(0, Menu.FIRST + 4, 0, "标记为已完成");
             contextMenu.add(0, Menu.FIRST + 5, 0, "标记为未完成");
-            contextMenu.add(0, Menu.FIRST + 6, 0, "设置日期");
-            contextMenu.add(0, Menu.FIRST + 7, 0, "清除提醒");
         }
     }
 
