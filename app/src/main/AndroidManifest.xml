@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.android.myapplication">
 
+    <uses-permission android:name="android.permission.VIBRATE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,11 +22,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--闹钟接收广播-->
+        <receiver android:name=".receiver.AlarmReceiver">
+
+            <intent-filter>
+                <action android:name="com.e_eduspace.TIMER_ACTION_REPEATING" />
+                <action android:name="com.e_eduspace.TIMER_ACTION" />
+            </intent-filter>
+        </receiver>
+
         <activity android:name=".MainActivity" />
         <activity android:name=".RegActivity" />
         <activity android:name=".EditActivity" />
         <activity android:name=".NoteActivity" />
         <activity android:name=".LoginActivity" />
+        <activity android:name=".AlarmActivity" />
     </application>
 
 </manifest>

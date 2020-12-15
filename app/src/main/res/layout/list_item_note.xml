@@ -34,6 +34,14 @@
             android:scaleType="centerCrop"
             android:src="@drawable/finish" />
 
+        <ImageView
+            android:id="@+id/iv_list_notify"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="20dp"
+            android:layout_toLeftOf="@id/iv_list_mark"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_alarm_unnotify" />
 
         <TextView
             android:id="@+id/tv_list_summary"

@@ -1,5 +1,8 @@
 package com.android.myapplication;
 
+import android.app.AlarmManager;
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -9,6 +12,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -18,11 +23,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.myapplication.Adapter.NoteListAdapter;
+import com.android.myapplication.bean.GlobalValues;
 import com.android.myapplication.bean.NoteBean;
 import com.android.myapplication.db.NoteDao;
+import com.android.myapplication.utils.AlarmTimer;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -158,9 +166,62 @@ public class MainTab01 extends Fragment {
                     mNoteListAdapter.notifyItemRangeChanged(position, position);
                 }
                 break;
-
+            case Menu.FIRST + 6://设置提醒时间
+                NoteBean bean3 = noteList.get(position);
+                selectTime(bean3.getId(), bean3, position);
+                break;
+            case Menu.FIRST + 7://清除提醒
+                NoteBean noteBean = noteList.get(position);
+                AlarmTimer.cancelAlarmTimer(getContext(), GlobalValues.TIMER_ACTION, noteBean.getId());
+                noteBean.setAlarm(0);
+                noteDao.updateNote(noteBean);
+                //noteList.get(position).setMark(0);
+                refreshNoteList();
+                mNoteListAdapter.notifyItemRangeChanged(position, position);
+                break;
         }
         return super.onContextItemSelected(item);
+    }
+
+    private void selectTime(final int alarmId, final NoteBean noteBean, final int position) {
+
+        final Calendar calendar = Calendar.getInstance();
+        DatePickerDialog dpdialog = new DatePickerDialog(getContext(),
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year,
+                                          int month, int day) {
+                        // TODO Auto-generated method stub
+                        // 更新EditText控件日期 小于10加0
+                        calendar.set(Calendar.YEAR, year);
+                        calendar.set(Calendar.MONTH, month);
+                        calendar.set(Calendar.DAY_OF_MONTH, day);
+
+                    }
+                }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+
+
+        final TimePickerDialog tpdialog = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int i, int i1) {
+                calendar.set(Calendar.HOUR, i);
+                calendar.set(Calendar.MINUTE, i1);
+                long timeInMillis = calendar.getTimeInMillis();
+                noteBean.setAlarm(1);
+                noteDao.updateNote(noteBean);
+                AlarmTimer.setAlarmTimer(getContext(), timeInMillis, GlobalValues.TIMER_ACTION, AlarmManager.RTC_WAKEUP, alarmId, noteBean);
+
+                refreshNoteList();
+                mNoteListAdapter.notifyItemRangeChanged(position, position);
+            }
+        }, calendar.get(Calendar.HOUR), calendar.get(Calendar.MINUTE), true);
+        dpdialog.show();
+        dpdialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                tpdialog.show();
+            }
+        });
     }
 
     //刷新数据库数据，其实对notelist单一更新即可，不必重新获取，但是偷懒了
