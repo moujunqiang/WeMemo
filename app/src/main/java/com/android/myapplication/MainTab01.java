@@ -204,7 +204,7 @@ public class MainTab01 extends Fragment {
         final TimePickerDialog tpdialog = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker, int i, int i1) {
-                calendar.set(Calendar.HOUR, i);
+                calendar.set(Calendar.HOUR_OF_DAY, i);
                 calendar.set(Calendar.MINUTE, i1);
                 long timeInMillis = calendar.getTimeInMillis();
                 noteBean.setAlarm(1);
@@ -214,7 +214,7 @@ public class MainTab01 extends Fragment {
                 refreshNoteList();
                 mNoteListAdapter.notifyItemRangeChanged(position, position);
             }
-        }, calendar.get(Calendar.HOUR), calendar.get(Calendar.MINUTE), true);
+        }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true);
         dpdialog.show();
         dpdialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override

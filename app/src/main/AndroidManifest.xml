@@ -3,6 +3,8 @@
     package="com.android.myapplication">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -26,8 +28,8 @@
         <receiver android:name=".receiver.AlarmReceiver">
 
             <intent-filter>
-                <action android:name="com.e_eduspace.TIMER_ACTION_REPEATING" />
-                <action android:name="com.e_eduspace.TIMER_ACTION" />
+                <action android:name="com.myapplication.memo.TIMER_ACTION_REPEATING" />
+                <action android:name="com.myapplication.memo.TIMER_ACTION" />
             </intent-filter>
         </receiver>
 

@@ -3,6 +3,7 @@ package com.android.myapplication;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -12,6 +13,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
+
+import com.android.myapplication.bean.GlobalValues;
+import com.android.myapplication.receiver.AlarmReceiver;
 
 
 public class MainActivity extends FragmentActivity {
@@ -37,8 +41,12 @@ public class MainActivity extends FragmentActivity {
 		setContentView(R.layout.activity_main);
 		mViewPager = (ViewPager) findViewById(R.id.id_viewpager);
 
-
-		initView();
+        AlarmReceiver alarmReceiver = new AlarmReceiver();
+        IntentFilter intentFilter =new IntentFilter();
+        intentFilter.addAction(GlobalValues.TIMER_ACTION);
+        intentFilter.addAction(GlobalValues.TIMER_ACTION_REPEATING);
+        registerReceiver(alarmReceiver,intentFilter);
+		initView()  ;
 
 
 
