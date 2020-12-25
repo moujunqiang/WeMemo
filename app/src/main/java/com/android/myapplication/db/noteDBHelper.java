@@ -22,8 +22,6 @@ public class noteDBHelper extends SQLiteOpenHelper {
                 "year varchar,"+
                 "month varchar,"+
                 "day varchar,"+
-                "updateTime varchar,"+
-                "remindTime varchar,"+
                 "isneedAlarm integer,"+
                 "note_owner varchar)";
         sqLiteDatabase.execSQL(sql);

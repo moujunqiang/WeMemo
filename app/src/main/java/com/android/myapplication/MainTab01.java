@@ -244,7 +244,6 @@ public class MainTab01 extends Fragment {
                 bean.setType(cursor.getString(cursor.getColumnIndex("note_type")));
                 bean.setMark(cursor.getInt(cursor.getColumnIndex("note_mark")));
                 bean.setCreateTime(cursor.getString(cursor.getColumnIndex("createTime")));
-                bean.setUpdateTime(cursor.getString(cursor.getColumnIndex("updateTime")));
                 bean.setOwner(cursor.getString(cursor.getColumnIndex("note_owner")));
                 bean.setYear(cursor.getString(cursor.getColumnIndex("year")));
                 bean.setMonth(cursor.getString(cursor.getColumnIndex("month")));

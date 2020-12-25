@@ -115,7 +115,6 @@ public class EditActivity extends AppCompatActivity {
             myTitle = note.getTitle();
             myContent = note.getContent();
             myCreate_time = note.getCreateTime();
-            mySelect_time = note.getRemindTime();
             login_user = note.getOwner();
             myType = note.getType();
             setTitle("编辑笔记");
@@ -176,18 +175,14 @@ public class EditActivity extends AppCompatActivity {
             return;
         }
 
-        String notecreateTime = myCreate_time;
-        String noteupdateTime = getNowTime();
         int noteID = myID;
         if (note == null) {
             note = new NoteBean();
-        } else {
-
         }
         noteDao = new NoteDao(this);
         note.setTitle(noteTitle);
         note.setContent(noteContent);
-        note.setCreateTime(noteupdateTime);
+        note.setCreateTime(noteremindTime);
         if (calendar == null) {
             calendar = Calendar.getInstance();
         } else {
@@ -196,7 +191,6 @@ public class EditActivity extends AppCompatActivity {
             note.setDay(calendar.get(Calendar.DAY_OF_MONTH) + "");
         }
 
-        note.setRemindTime(noteremindTime);
         note.setType(spinner.getSelectedItem().toString());
         note.setOwner(login_user);
         if (flag == 0) {//新建笔记

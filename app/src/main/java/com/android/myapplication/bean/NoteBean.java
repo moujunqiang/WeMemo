@@ -15,10 +15,6 @@ public class NoteBean implements Serializable {
     private int mark;
     //创建时间
     private String createTime;
-    //更新时间
-    private String updateTime;
-    //提醒时间
-    private String remindTime;
     //作者
     private String owner;
     //年
@@ -89,21 +85,6 @@ public class NoteBean implements Serializable {
         this.createTime = createTime;
     }
 
-    public String getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(String updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public String getRemindTime() {
-        return remindTime;
-    }
-
-    public void setRemindTime(String remindTime) {
-        this.remindTime = remindTime;
-    }
 
     public String getOwner() {
         return owner;

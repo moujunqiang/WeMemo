@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_size_14"
-            android:text="创建时间"
+            android:text="完成时间"
             android:textColor="@color/grey_500"
             android:layout_alignParentLeft="true"/>
 

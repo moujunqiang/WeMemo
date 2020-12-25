@@ -30,8 +30,6 @@ public class NoteDao {
         cv.put("note_type", bean.getType());
         cv.put("note_mark", bean.getMark());
         cv.put("createTime", bean.getCreateTime());
-        cv.put("updateTime", bean.getUpdateTime());
-        cv.put("remindTime", bean.getRemindTime());
         cv.put("note_owner", bean.getOwner());
         cv.put("year", bean.getYear());
         cv.put("month", bean.getMonth());
@@ -61,12 +59,11 @@ public class NoteDao {
         cv.put("note_content", note.getContent());
         cv.put("note_type", note.getType());
         cv.put("note_mark", note.getMark());
-        cv.put("updateTime", note.getUpdateTime());
-        cv.put("remindTime", note.getRemindTime());
         cv.put("year", note.getYear());
         cv.put("month", note.getMonth());
         cv.put("day", note.getDay());
         cv.put("isneedAlarm",note.getAlarm());
+        cv.put("createTime", note.getCreateTime());
 
         db.update("note_data", cv, "note_id=?", new String[]{note.getId() + ""});
         db.close();
@@ -101,8 +98,6 @@ public class NoteDao {
             note.setAlarm(cursor.getInt(cursor.getColumnIndex("isneedAlarm")));
 
             note.setCreateTime(cursor.getString(cursor.getColumnIndex("createTime")));
-            note.setUpdateTime(cursor.getString(cursor.getColumnIndex("updateTime")));
-            note.setRemindTime(cursor.getString(cursor.getColumnIndex("remindTime")));
             noteList.add(note);
         }
 
@@ -139,8 +134,6 @@ public class NoteDao {
             note.setType(cursor.getString(cursor.getColumnIndex("note_type")));
             note.setMark(cursor.getInt(cursor.getColumnIndex("note_mark")));
             note.setCreateTime(cursor.getString(cursor.getColumnIndex("createTime")));
-            note.setUpdateTime(cursor.getString(cursor.getColumnIndex("updateTime")));
-            note.setRemindTime(cursor.getString(cursor.getColumnIndex("remindTime")));
             note.setYear(cursor.getString(cursor.getColumnIndex("year")));
             note.setMonth(cursor.getString(cursor.getColumnIndex("month")));
             note.setDay(cursor.getString(cursor.getColumnIndex("day")));
@@ -180,8 +173,6 @@ public class NoteDao {
             note.setType(cursor.getString(cursor.getColumnIndex("note_type")));
             note.setMark(cursor.getInt(cursor.getColumnIndex("note_mark")));
             note.setCreateTime(cursor.getString(cursor.getColumnIndex("createTime")));
-            note.setUpdateTime(cursor.getString(cursor.getColumnIndex("updateTime")));
-            note.setRemindTime(cursor.getString(cursor.getColumnIndex("remindTime")));
             note.setYear(cursor.getString(cursor.getColumnIndex("year")));
             note.setMonth(cursor.getString(cursor.getColumnIndex("month")));
             note.setDay(cursor.getString(cursor.getColumnIndex("day")));

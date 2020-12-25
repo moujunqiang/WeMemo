@@ -61,7 +61,6 @@ public class NoteActivity extends AppCompatActivity {
         myTitle = note.getTitle();
         myContent = note.getContent();
         myCreate_time=note.getCreateTime();
-        myRemind_time=note.getRemindTime();
 
         tv_note_title.setText(myTitle);
         tv_note_content.setText(myContent);
