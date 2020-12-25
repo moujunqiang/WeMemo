@@ -36,13 +36,6 @@
             android:textColor="@color/grey_500"
             android:layout_alignParentLeft="true"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size_14"
-            android:text="备忘时间"
-            android:textColor="@color/grey_500"
-            android:layout_alignParentRight="true"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -60,13 +53,7 @@
             android:textColor="@color/grey_500"
             android:layout_alignParentLeft="true"/>
 
-        <TextView
-            android:id="@+id/tv_note_remind_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size_14"
-            android:textColor="@color/grey_500"
-            android:layout_alignParentRight="true"/>
+
     </RelativeLayout>
 
     <TextView

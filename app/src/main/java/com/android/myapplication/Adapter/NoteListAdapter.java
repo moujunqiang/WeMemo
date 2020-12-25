@@ -94,7 +94,7 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.ViewHo
         //Log.e("adapter", "###record="+record);
         holder.tv_list_title.setText(note.getTitle());
         holder.tv_list_summary.setText(note.getContent());
-        holder.tv_list_remindtime.setText(note.getRemindTime());
+        holder.tv_list_remindtime.setText(note.getCreateTime());
         holder.tv_list_type.setText(note.getType());
         holder.iv_list_notify.setImageResource(note.getAlarm() == 0 ? R.drawable.ic_alarm_unnotify : R.drawable.ic_alarm_notify);
         holder.iv_list_mark.setImageResource(note.getMark() == 0 ? R.drawable.unfinish : R.drawable.finish);

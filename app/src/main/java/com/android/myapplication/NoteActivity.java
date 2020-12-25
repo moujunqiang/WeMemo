@@ -23,7 +23,6 @@ public class NoteActivity extends AppCompatActivity {
     private TextView tv_note_title;//笔记标题
     private TextView tv_note_content;//笔记内容
     private TextView tv_note_create_time;//笔记创建时间
-    private TextView tv_note_remind_time;//笔记备忘时间
     private NoteBean note;//笔记对象
     private String myTitle;
     private String myContent;
@@ -54,7 +53,6 @@ public class NoteActivity extends AppCompatActivity {
         tv_note_title.setTextIsSelectable(true);
         tv_note_content = (TextView) findViewById(R.id.tv_note_content);//内容
         tv_note_create_time = (TextView) findViewById(R.id.tv_note_create_time);
-        tv_note_remind_time = (TextView) findViewById(R.id.tv_note_remind_time);
 
         Intent intent = getIntent();
         Bundle bundle = intent.getBundleExtra("data");
@@ -68,10 +66,7 @@ public class NoteActivity extends AppCompatActivity {
         tv_note_title.setText(myTitle);
         tv_note_content.setText(myContent);
         tv_note_create_time.setText(myCreate_time);
-        tv_note_remind_time.setText(myRemind_time);
         setTitle("笔记详情");
-
-
 
 
 

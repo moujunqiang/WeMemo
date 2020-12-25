@@ -35,7 +35,6 @@ public class EditActivity extends AppCompatActivity {
     private String myTitle;
     private String myContent;
     private String myCreate_time;
-    private String myUpdate_time;
     private String mySelect_time;
     private String myType;
     private Calendar calendar;
@@ -94,6 +93,7 @@ public class EditActivity extends AppCompatActivity {
             }
         });
     }
+
     private void init() {
         et_new_title = (EditText) findViewById(R.id.et_new_title);
         et_new_content = (EditText) findViewById(R.id.et_new_content);
@@ -107,7 +107,6 @@ public class EditActivity extends AppCompatActivity {
         if (flag == 0) {//0新建
             setTitle("新建笔记");
             myCreate_time = getNowTime();
-            myUpdate_time = getNowTime();
 
         } else if (flag == 1) {//1编辑
             Bundle bundle = intent.getBundleExtra("data");
@@ -116,7 +115,6 @@ public class EditActivity extends AppCompatActivity {
             myTitle = note.getTitle();
             myContent = note.getContent();
             myCreate_time = note.getCreateTime();
-            myUpdate_time = note.getUpdateTime();
             mySelect_time = note.getRemindTime();
             login_user = note.getOwner();
             myType = note.getType();
@@ -128,7 +126,7 @@ public class EditActivity extends AppCompatActivity {
             }
             et_new_title.setText(note.getTitle());
             et_new_content.setText(note.getContent());
-            tv_time.setText(mySelect_time);
+            tv_time.setText(myCreate_time);
 
         }
     }
@@ -183,17 +181,21 @@ public class EditActivity extends AppCompatActivity {
         int noteID = myID;
         if (note == null) {
             note = new NoteBean();
+        } else {
+
         }
         noteDao = new NoteDao(this);
         note.setTitle(noteTitle);
         note.setContent(noteContent);
-        note.setUpdateTime(noteupdateTime);
+        note.setCreateTime(noteupdateTime);
         if (calendar == null) {
             calendar = Calendar.getInstance();
+        } else {
+            note.setYear(calendar.get(Calendar.YEAR) + "");
+            note.setMonth((calendar.get(Calendar.MONTH) + 1) + "");
+            note.setDay(calendar.get(Calendar.DAY_OF_MONTH) + "");
         }
-        note.setYear(calendar.get(Calendar.YEAR) + "");
-        note.setMonth((calendar.get(Calendar.MONTH) + 1) + "");
-        note.setDay(calendar.get(Calendar.DAY_OF_MONTH) + "");
+
         note.setRemindTime(noteremindTime);
         note.setType(spinner.getSelectedItem().toString());
         note.setOwner(login_user);
